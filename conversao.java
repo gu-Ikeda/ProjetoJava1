@@ -18,19 +18,24 @@ public class Main
 		    System.out.println("Deseja continuar? ");
 		    resp = scan.nextLine().charAt(0);
 		}
-		System.out.println("Os valores inseridos na expressao são:");
+		/*System.out.println("Os valores inseridos na expressao são:");
         for (int j = 0; j < i; j++) {
             System.out.println(infixa[j]);
-        }
+        }*/
         
         for(int j = 0;j<i;j++){
-            if (infixa[j].equals("+"))
+            String val = infixa[j];
+            if (val.equals("+") || val.equals("-"))
             {
-                pilha.push(infixa[j]);
+                pilha.push(val);
             }
-            else if(infixa[j].equals("-"));
+            else if(val.equals("*"))
             {
-                pilha.push(infixa[j]);
+                if(!pilha.isEmpty() && (pilha.peek().equals("*") || pilha.peek().equals("/") || pilha.peek().equals("^")))
+                {
+                    pilha.pop();
+                }
+                pilha.push(val);
             }
         }
         while(!pilha.isEmpty())
