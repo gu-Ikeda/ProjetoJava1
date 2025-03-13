@@ -3,44 +3,64 @@ import java.util.Scanner;
 
 public class Main
 {
-	public static void main(String[] args) {
-		Stack <String> pilha = new Stack<>();
-		String[] infixa = new String[10];
-		char resp = 'S';
-		int i = 0;
-		Scanner scan = new Scanner(System.in);
-		while(resp == 'S')
-		{
-		    System.out.println("Insira um valor da expressao: ");
-		    String val = scan.nextLine();
-		    infixa[i] = val;
-		    i++;
-		    System.out.println("Deseja continuar? ");
-		    resp = scan.nextLine().charAt(0);
-		}
-		/*System.out.println("Os valores inseridos na expressao são:");
-        for (int j = 0; j < i; j++) {
-            System.out.println(infixa[j]);
-        }*/
-        
-        for(int j = 0;j<i;j++){
+    public static void main(String[] args) {
+        Stack <String> pilha = new Stack<>();
+        String[] infixa = new String[10];
+        String[] saida = new String[10];
+        char resp = 'S';
+        int i = 0, j = 0, k =0;
+        Scanner scan = new Scanner(System.in);
+
+        while(resp == 'S')
+        {
+            System.out.println("Insira um valor da expressao: ");
+            String val = scan.nextLine();
+            infixa[i] = val;
+            i++;
+            System.out.println("Deseja continuar? ");
+            resp = scan.nextLine().charAt(0);
+        }
+
+        while(j<i){
             String val = infixa[j];
-            if (val.equals("+") || val.equals("-"))
+            if (val.equals("+") || val.equals("-") || val.equals("("))
             {
                 pilha.push(val);
             }
-            else if(val.equals("*"))
+            else if(val.equals("*") || val.equals("/") || val.equals("^"))
             {
-                if(!pilha.isEmpty() && (pilha.peek().equals("*") || pilha.peek().equals("/") || pilha.peek().equals("^")))
+                while(!pilha.isEmpty() && (pilha.peek().equals("*") || pilha.peek().equals("/") || pilha.peek().equals("^")))
                 {
-                    pilha.pop();
+                    saida[k++] = pilha.pop();
                 }
                 pilha.push(val);
             }
+            else if(val.equals(")"))
+            {
+                while(!pilha.peek().equals("("))
+                {
+                    saida[k++] = pilha.pop();
+                }
+                pilha.pop();
+            }
+            else
+            {
+                saida[k++] = val;
+            }
+            j++;
         }
-        while(!pilha.isEmpty())
+        while(!pilha.isEmpty()){
+            saida[k++] = pilha.pop();
+        }
+
+        System.out.println("Expressao pos fixa");
+        for(String s : saida)
         {
-            System.out.println(pilha.pop());
+            if(s != null)
+            {
+                System.out.println(s + " ");
+            }
         }
-	}
+        scan.close();
+    }
 }
