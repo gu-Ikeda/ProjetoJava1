@@ -1,5 +1,4 @@
 import java.util.Stack;
-import java.lang.Math;
 
 public class Main
 {
@@ -8,9 +7,9 @@ public class Main
         int res = 0;
         int num1 = 0;
         int num2 = 0;
-        char[] lista1 = {'X', 'Y','Z'};
-        int[] lista2 = {2, 3,1};
-        char[] lista3 = {'X', 'Y','Z', '-','+'}; 
+        char[] lista1 = {'A','B','C','D','E','F'};
+        int[] lista2 = {7,3,6,4,9};
+        char[] lista3 = {'A','B','+','C','D','-','/','E','*'}; 
         
         for (int i = 0; i < lista3.length; i++)
         {
@@ -47,12 +46,17 @@ public class Main
             {
                 num2 = pilha.pop();
                 num1 = pilha.pop();
-                res = Math.pow(num1,num2);
+                for(int k = 0;k<num2;k++)
+                {
+                    res *= num1;
+                }   
                 pilha.push(res);
             else
             {
-                for (int j = 0; j < lista1.length; j++) {
-                    if (lista1[j] == lista3[i]) {
+                for (int j = 0; j < lista1.length; j++) 
+                {
+                    if (lista1[j] == lista3[i]) 
+                    {
                         pilha.push(lista2[j]);  
                     }
                 }
