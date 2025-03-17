@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.lang.Math;
 
 public class Main
 {
@@ -28,6 +29,26 @@ public class Main
                 res = num1 - num2;
                 pilha.push(res);
             }
+            else if(lista3[i] == '*')
+            {
+                num2 = pilha.pop();
+                num1 = pilha.pop();
+                res = num1 * num2;
+                pilha.push(res);
+            }
+            else if(lista3[i] == '/')
+            {
+                num2 = pilha.pop();
+                num1 = pilha.pop();
+                res = num1/num2;
+                pilha.push(res);
+            }
+            else if(lista3[i] == '^')
+            {
+                num2 = pilha.pop();
+                num1 = pilha.pop();
+                res = Math.pow(num1,num2);
+                pilha.push(res);
             else
             {
                 for (int j = 0; j < lista1.length; j++) {
