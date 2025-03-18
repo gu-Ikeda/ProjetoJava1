@@ -7,7 +7,7 @@ public class Main
         int res = 0;
         int num1 = 0;
         int num2 = 0;
-        char[] lista1 = {'A','B','C','D','E','F'};
+        char[] lista1 = {'A','B','C','D','E'};
         int[] lista2 = {7,3,6,4,9};
         char[] lista3 = {'A','B','+','C','D','-','/','E','*'}; 
         
@@ -51,6 +51,7 @@ public class Main
                     res *= num1;
                 }   
                 pilha.push(res);
+            }
             else
             {
                 for (int j = 0; j < lista1.length; j++) 
