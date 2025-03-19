@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Pilha pilha = new Pilha();
+        Pilha pilha = new Pilha();//Cria uma pilha para realizar a conversao
         char[] infixa = new char[20]; //array que armazena a forma infixa da expressao
         char[] saida = new char[20]; //array que armazen a forma pos-fixa da expressao
         char resp = 'S';
@@ -79,7 +79,7 @@ public class Main {
             }
 
 
-            PilhaNum pilhanum = new PilhaNum();
+            PilhaNum pilhanum = new PilhaNum(); //Cria uma pilha para realizar o calculo da expressao
             int res = 0;
             int num1 = 0;
             int num2 = 0;
