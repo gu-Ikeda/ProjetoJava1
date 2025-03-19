@@ -36,13 +36,20 @@ public class Main {
 
             while (resp == 'S') {
                 System.out.println("Insira um valor da expressao: ");
+                String expressao = scan.nextLine();
+                expressao = expressao.replaceAll("\\s", "");
+                infixa = expressao.toCharArray();
+                System.out.println("Deseja continuar? ");
+                resp = scan.nextLine().charAt(0);
+
+                /*System.out.println("Insira um valor da expressao: ");
                 char val = scan.nextLine().charAt(0);
                 infixa[i++] = val;
                 System.out.println("Deseja continuar? ");
-                resp = scan.nextLine().charAt(0);
+                resp = scan.nextLine().charAt(0);*/
             }
 
-            while (j < i) {
+            while (j < infixa.length) {
                 char val = infixa[j];
                 if (val == '+' || val == '-' || val == '(') {
                     pilha.push(val);
@@ -119,4 +126,4 @@ public class Main {
 
             System.out.println(res);
         }
-    }
+    
