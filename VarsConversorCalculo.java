@@ -3,18 +3,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Pilha pilha = new Pilha();
-        char[] infixa = new char[20];
-        char[] saida = new char[20];
+        char[] infixa = new char[20]; //array que armazena a forma infixa da expressao
+        char[] saida = new char[20]; //array que armazen a forma pos-fixa da expressao
         char resp = 'S';
         int i = 0, j = 0, k = 0;
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Digite as variaveis: ");
         char respo = 'S';
-        char[] junto;
-        char[] var = new char[10];
-        int[] valor = new int[10];
-        int convertido;
+        char[] junto; //array que armazena a expressao "Var=Valor" sem espacos
+        char[] var = new char[10]; //array que armazena as variaveis inseridas
+        int[] valor = new int[10]; //array que armazena os valores respectivos das variaveis
+        int convertido; // converte o valor da variavel de char para int
         int tracker = 0;
         while (respo == 'S') {
             System.out.println("Digite: ");
@@ -34,9 +34,9 @@ public class Main {
 
 
 
-            while (resp == 'S') {
+            while (resp == 'S') { //Pede a expressao
                 System.out.println("Insira um valor da expressao: ");
-                String expressao = scan.nextLine();
+                String expressao = scan.nextLine(); //array que armazena a expressao a ser convertida, calculada
                 expressao = expressao.replaceAll("\\s", "");
                 infixa = expressao.toCharArray();
                 System.out.println("Deseja continuar? ");
@@ -49,7 +49,7 @@ public class Main {
                 resp = scan.nextLine().charAt(0);*/
             }
 
-            while (j < infixa.length) {
+            while (j < infixa.length) { //Converte a expresssao da forma infixa para forma pos-fixa
                 char val = infixa[j];
                 if (val == '+' || val == '-' || val == '(') {
                     pilha.push(val);
@@ -72,7 +72,7 @@ public class Main {
                 saida[k++] = pilha.pop();
             }
 
-            System.out.println("Expressao pos-fixa:");
+            System.out.println("Expressao pos-fixa:");//Imprimi a expressao na forma pos-fixa
             for (int l = 0; l < k; l++)
             {
                 System.out.print(saida[l] + " ");
@@ -87,7 +87,7 @@ public class Main {
             int[] lista2 = {7, 3};
             saida = {A,B,+}*/ //valor
 
-            for (int u = 0; u < k; u++) { // k era saida.length
+            for (int u = 0; u < k; u++) { // k era saida.length // Calcula a expressao
                 if (saida[u] == '+') {
                     num2 = pilhanum.pop();
                     num1 = pilhanum.pop();
@@ -124,6 +124,6 @@ public class Main {
                 }
             }
 
-            System.out.println(res);
+            System.out.println(res);//Imprimi o resultado da expressao
         }
     
