@@ -124,6 +124,6 @@ public class Main {
                 }
             }
 
-            System.out.println(res);//Imprimi o resultado da expressao
+            System.out.println(res);//Imprimi o resultado da expressao //System.out.println(pilhanum.pop()) para imprimir o resultado e esvaziar a pilha
         }
-    
+}
