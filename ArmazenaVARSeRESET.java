@@ -43,7 +43,7 @@ public class Main
             {
                 vari = new char[10];
                 valor = new int[10];
-                System.out.println("Vazio");
+                System.out.println("Variaveis reiniciadas");
                 tracker = 0;
             }
             else if(teste.equals("EXIT"))
