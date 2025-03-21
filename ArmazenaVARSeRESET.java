@@ -11,7 +11,6 @@ public class Main
         int[] valor = new int[10];
         int convertido;
         int tracker = 0;
-        boolean vazio = true;
         while(resp == 'S'){
             System.out.println("Digite: ");
             String teste = scan.nextLine();
