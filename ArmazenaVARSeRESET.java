@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args) {
-        System.out.println("Digite as variaveis: ");
         Scanner scan = new Scanner(System.in);
         char resp = 'S';
         char[] junto = new char[10];
@@ -11,8 +10,8 @@ public class Main
         int[] valor = new int[10];
         int convertido;
         int tracker = 0;
+        boolean vazio = true;
         while(resp == 'S'){
-            System.out.println("Digite: ");
             String teste = scan.nextLine();
             teste = teste.replaceAll("\\s", ""); //remove os espacos
             junto = teste.toCharArray(); // converte para um array de char
@@ -48,8 +47,10 @@ public class Main
                 System.out.println("Vazio");
                 tracker = 0;
             }
-            System.out.println("Deseja continuar?");
-            resp = scan.nextLine().charAt(0);
+            else if(teste.equals("EXIT"))
+            {
+                resp = 'N';
+            }
         }
     }
 }
