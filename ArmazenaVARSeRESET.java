@@ -10,7 +10,6 @@ public class Main
         int[] valor = new int[10];
         int convertido;
         int tracker = 0;
-        boolean vazio = true;
         while(resp == 'S'){
             String teste = scan.nextLine();
             teste = teste.replaceAll("\\s", ""); //remove os espacos
