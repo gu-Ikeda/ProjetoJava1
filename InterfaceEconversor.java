@@ -45,11 +45,8 @@ public class Main
             {
                 vari = new char[10];
                 valor = new int[10];
-                posfixa = new char[20]; //da pra reiniciar as variaveis no final do else
-                System.out.println("Variaveis reiniciadas");
                 tracker = 0;
-                reach = 0;
-                aux = 0;
+                System.out.println("Variaveis reiniciadas");
             }
             else if(entrada.equals("EXIT"))
             {
@@ -96,6 +93,9 @@ public class Main
                     System.out.print(posfixa[l] + " ");
                 }
                 System.out.println("");
+                posfixa = new char[20];
+                reach = 0;
+                aux = 0;
             }
         }
     }
