@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static String[] verificador(char[] junto){
+    public static String[] verificador(char[] junto){ //verifica se a entrada possui operados, letras seguidas, um numero impar de parenteses ou um operador invalido
         char[] veri = junto;
         int operadores = 0;
         int parenteses = 0;
         int seguido = 0;
+        int op_invalido = 0;
         for(int i = 0;i<veri.length;i++)
         {
             if(veri[i] == '+' || veri[i] == '-' || veri[i] == '*' || veri[i] == '/' || veri[i] == '^')
@@ -25,6 +26,15 @@ public class Main
             {
                 seguido++;
             }
+            else if(veri[veri.length-1] == '+' || veri[veri.length-1] == '-' || veri[veri.length-1] == '*' || veri[veri.length-1] == '/' || veri[veri.length-1] == '^')
+            {
+                seguido++;
+            }
+            else if(veri[i] == '%')
+            {
+                operadores++;
+                op_invalido++;
+            }
         }
 
         if(operadores == 0){
@@ -36,10 +46,13 @@ public class Main
         else if(seguido > 0){
             return new String[]{"Erro: Expressao invalida","false"};
         }
+        else if(op_invalido > 0){
+            return new String[]{"Erro: Operador invalido","false"};
+        }
         return new String[]{"","true"};
     }
 
-    public static boolean vazio(char[] vari){
+    public static boolean vazio(char[] vari){ // verifica se o array das variaveis esta vazio
         for(int i = 0;i<vari.length;i++){
             if(vari[i] != '\0')
             {
@@ -48,7 +61,7 @@ public class Main
         }
         return false;
     }
-    public static boolean diferente(char[] vari, char[] junto){
+    public static boolean diferente(char[] vari, char[] junto){ //verifica se a expressao contem as variaveis digitadas
         for(int i = 0;i<junto.length;i++)
         {
             boolean encontrado = false;
@@ -70,8 +83,8 @@ public class Main
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Pilha pilha = new Pilha();
-        boolean teste ; // trocar
-        boolean teste2; //trocar
+        boolean teste ;
+        boolean teste2; 
         boolean teste3;
         boolean resp = true;
         char[] junto = new char[20];
@@ -84,7 +97,7 @@ public class Main
             String entrada = scan.nextLine();
             entrada = entrada.replaceAll("\\s", ""); //remove os espacos
             junto = entrada.toCharArray(); // converte para um array de char
-            if(junto.length >= 3 && junto[1] == '=')
+            if(junto.length >= 3 && junto[1] == '=') //armazena as variaveis
             {
                 vari[tracker] = junto[0];
                 convertido = Integer.parseInt(String.valueOf(junto[2]));
@@ -93,7 +106,7 @@ public class Main
                 System.out.println(vari[tracker]+" = "+valor[tracker]);
                 tracker++;
             }
-            else if (junto.length == 1) {
+            else if (junto.length == 1) { // imprimi a variavel digitada
                 boolean encontrado = false;
                 for (int j = 0; j < tracker; j++) {
                     if (junto[0] == vari[j]) {
@@ -106,7 +119,7 @@ public class Main
                     System.out.println("Variável" +junto[0]+ " não inciada.");
                 }
             }
-            else if(entrada.equals("VARS"))
+            else if(entrada.equals("VARS")) //imprimi todas as variaveis lidas
             {
                 if(tracker == 0)
                 {
@@ -120,14 +133,14 @@ public class Main
                     }
                 }
             }
-            else if(entrada.equals("RESET"))
+            else if(entrada.equals("RESET")) //Reinicia as variaveis
             {
                 vari = new char[10];
                 valor = new int[10];
                 tracker = 0;
                 System.out.println("Variaveis reiniciadas");
             }
-            else if(entrada.equals("EXIT"))
+            else if(entrada.equals("EXIT")) //encerra o programa
             {
                 resp = false;
             }
@@ -150,9 +163,9 @@ public class Main
                     }
                     junto = new char[20];
                 }
-                else if(teste == true && teste2 == true && teste3 == true)
+                else if(teste == true && teste2 == true && teste3 == true) 
                 {
-                    while(reach < junto.length)
+                    while(reach < junto.length) // converte a expressao da froma infixa para pos-fixa
                     {
                         char val = junto[reach];
                         if(val == '+' || val == '-' || val == '(')
@@ -191,16 +204,14 @@ public class Main
                         System.out.print(posfixa[l] + " ");
                     }
                     System.out.println("");
-                    //posfixa = new char[20];
                     reach = 0;
-                    //aux = 0;
 
-                    PilhaNum pilhanum = new PilhaNum();
+                    PilhaNum pilhanum = new PilhaNum(); //cria uma pilha para inteiros
                     int res = 0;
                     int num1 = 0;
                     int num2 = 0;
 
-                    for(int u = 0; u < aux;u++){
+                    for(int u = 0; u < aux;u++){ //realisa a operação
                         if(posfixa[u] == '+')
                         {
                             num2 = pilhanum.pop();
@@ -249,8 +260,8 @@ public class Main
                             }
                         }
                     }
-                    System.out.println(res);
-                    posfixa = new char[20];
+                    System.out.println(res); //imprimi o resultado
+                    posfixa = new char[20]; //reinicia as variaveis
                     junto = new char[20];
                     aux = 0;
                 }
